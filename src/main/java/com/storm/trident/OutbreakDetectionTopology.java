@@ -28,13 +28,13 @@ public class OutbreakDetectionTopology {
 		
 		.each(new Fields("event","city"), new HourAssignment(),new Fields("hour","cityDiseaseHour"))
 		
-		.groupBy(new Fields("cityDiseaseHour"))
+		.groupBy(new Fields("hour","cityDiseaseHour"))
 		
 		.persistentAggregate(new OutbreakTrendFactory(), new Count(), new Fields("count"))
 		
 		.newValuesStream() 
 		
-		.each(new Fields("cityDiseaseHour","count"),new OutbreakDetector(),new Fields("alert"))
+		.each(new Fields("hour","cityDiseaseHour","count"),new OutbreakDetector(),new Fields("alert"))
 		
 		.each(new Fields("alert"), new DispatchAlert(),new Fields());
 		
@@ -47,7 +47,7 @@ public class OutbreakDetectionTopology {
 		conf.setDebug(false);
 		LocalCluster cluster = new LocalCluster();
 		cluster.submitTopology("cdc", conf, buildTopology());
-		Thread.sleep(20000);
+		Thread.sleep(Integer.MAX_VALUE);
 		cluster.shutdown();
 	}
 }

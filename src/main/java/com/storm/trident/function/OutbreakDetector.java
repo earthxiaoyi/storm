@@ -15,7 +15,7 @@ public class OutbreakDetector extends BaseFunction{
 	
 	public void execute(TridentTuple tuple, TridentCollector collector) {
 		String key = tuple.getValue(0).toString();
-		Long count = (Long)tuple.getValue(1);
+		Long count = (Long)tuple.getValue(2);
 		if(count>THRESHOLD){
 			List<Object> list = new ArrayList<Object>();
 			list.add("Outbreak detected for ["+key+"]");

@@ -1,17 +1,15 @@
-package com.storm.trident.function;
+package com.storm.goods.function;
 
 import storm.trident.operation.BaseFunction;
 import storm.trident.operation.TridentCollector;
 import storm.trident.tuple.TridentTuple;
 
-public class DispatchAlert extends BaseFunction{
+public class RollingFunction extends BaseFunction{
 
 	private static final long serialVersionUID = 1L;
-	
+
 	public void execute(TridentTuple tuple, TridentCollector collector) {
-		String alert = (String)tuple.getValue(0);
-		System.out.println("alert reveived ["+alert+"]");
-		//System.exit(0);
+		System.out.println(tuple.toString());
 	}
 
 }
