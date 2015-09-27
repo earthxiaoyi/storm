@@ -2,7 +2,7 @@ package com.storm.goods.model;
 
 import java.io.Serializable;
 
-public class GoodsInfo implements Serializable{
+public class ClickInfo implements Serializable{
 	/**
 	 * 
 	 */
@@ -42,11 +42,11 @@ public class GoodsInfo implements Serializable{
 		return "GoodsInfo [id=" + id + ", goodsName=" + goodsName
 				+ ", goodsType=" + goodsType + ", clickNum=" + clickNum + "]";
 	}
-	public GoodsInfo() {
+	public ClickInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public GoodsInfo(long id, String goodsName, String goodsType, int clickNum) {
+	public ClickInfo(long id, String goodsName, String goodsType, int clickNum) {
 		super();
 		this.id = id;
 		this.goodsName = goodsName;

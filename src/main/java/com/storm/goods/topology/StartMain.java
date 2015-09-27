@@ -33,11 +33,9 @@ public class StartMain {
 		
 		stream.each(new Fields("goods"), new PrepareGoodsInfo(),new Fields("clickNum","goodsName","goodsType","id"))
 		
-		.groupBy(new Fields("clickNum","goodsName","goodsType"))
+		.groupBy(new Fields("clickNum","goodsName","goodsType","id"))
 		
-		.persistentAggregate(new GoodsTrendFactory(),new CountGoodsTypeClick(), new Fields("count")).newValuesStream()
-		//.each(new Fields("goodsName","goodsType","count"),new RollingFunction(), new Fields());
-		.each(new Fields("count"),new RollingFunction(), new Fields());
+		.persistentAggregate(new GoodsTrendFactory(),new CountGoodsTypeClick(), new Fields("count")).newValuesStream();
 		
 		return topology.build();
 	}

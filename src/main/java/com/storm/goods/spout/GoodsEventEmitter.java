@@ -9,7 +9,7 @@ import storm.trident.operation.TridentCollector;
 import storm.trident.spout.ITridentSpout.Emitter;
 import storm.trident.topology.TransactionAttempt;
 
-import com.storm.goods.model.GoodsInfo;
+import com.storm.goods.model.ClickInfo;
 
 public class GoodsEventEmitter implements Emitter<Long>,Serializable{
 
@@ -23,7 +23,7 @@ public class GoodsEventEmitter implements Emitter<Long>,Serializable{
 		for(int i=1;i<10;i++){
 			List<Object> goodsList = new ArrayList<Object>();
 			
-			GoodsInfo goods = new GoodsInfo();
+			ClickInfo goods = new ClickInfo();
 			
 			goods.setClickNum(1L);
 			goods.setGoodsName("鞋子");
