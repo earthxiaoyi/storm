@@ -56,7 +56,7 @@ public class GoodsTridentBackingMap implements IBackingMap<Long>{
 			//添加商品点击数
 			if(info==null){
 				CountGoodsInfo goodsInfo = new CountGoodsInfo();
-				goodsInfo.setClickNum(1L);
+				goodsInfo.setClickNum(vals.get(0));
 				goodsInfo.setGoodsId(id);
 				goodsInfo.setGoodsName(goodsName);
 				
@@ -65,7 +65,7 @@ public class GoodsTridentBackingMap implements IBackingMap<Long>{
 				goodsTypeInfo.setGoodsId(id);
 				goodsTypeInfo.setGoodsType(goodsType);
 				HashMap<String, Object> goodsTypeMap = new HashMap<String,Object>();
-				goodsTypeMap.put(goodsType, goodsTypeMap);
+				goodsTypeMap.put(goodsType, goodsTypeInfo);
 				goodsInfo.setMap(goodsTypeMap);
 				//设置值
 				goods.put(id, goodsInfo);
@@ -74,19 +74,19 @@ public class GoodsTridentBackingMap implements IBackingMap<Long>{
 				Map<String, Object> goodsTypeMap = info.getMap();
 				if(goodsTypeMap.containsKey(goodsType)){
 					GoodsTypeClickInfo goodsTypeInfo = (GoodsTypeClickInfo)goodsTypeMap.get(goodsType);
+					//设置总点击数量
+					info.setClickNum(info.getClickNum()+(vals.get(0)-goodsTypeInfo.getClickNum()));
 					goodsTypeInfo.setClickNum(vals.get(0));
 					//设置值
 					goodsTypeMap.put(goodsType, goodsTypeInfo);
-					//设置总点击数量
-					info.setClickNum(info.getClickNum()+1);
 				}else{
 					GoodsTypeClickInfo goodsTypeInfo = new GoodsTypeClickInfo();
+					//设置总点击量
+					info.setClickNum(info.getClickNum()+(vals.get(0)-goodsTypeInfo.getClickNum()));
 					goodsTypeInfo.setClickNum(vals.get(0));
 					goodsTypeInfo.setGoodsId(id);
 					goodsTypeInfo.setGoodsType(goodsType);
 					goodsTypeMap.put(goodsType, goodsTypeInfo);
-					//设置总点击量
-					info.setClickNum(info.getClickNum()+1);
 				}
 			}
 			
