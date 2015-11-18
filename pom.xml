@@ -26,7 +26,18 @@
 		<groupId>org.apache.storm</groupId>
 		<artifactId>storm-core</artifactId>
 		<version>0.9.5</version>
+		<exclusions>
+			<exclusion>
+				<groupId>org.slf4j</groupId>
+				<artifactId>log4j-over-slf4j</artifactId>
+			</exclusion>
+		</exclusions>
 	</dependency>
     
+    <dependency>
+		<groupId>org.apache.kafka</groupId>
+		<artifactId>kafka_2.10</artifactId>
+		<version>0.8.2.1</version>
+	</dependency>
   </dependencies>
 </project>
